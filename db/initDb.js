@@ -1,12 +1,16 @@
 const { getConnection } = require("./get-connection");
+const mysql = require("mysql2/promise");
+require("dotenv").config();
 
 const main = async () => {
   let connection;
 
   try {
-    connection = await getConnection();
+    const connection = await mysql.createConnection(process.env.DATABASE_URL);
 
-    await connection.query(`
+    await connection.execute("DROP TABLE IF EXISTS users");
+
+    await connection.execute(`
     CREATE TABLE users (
         id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         dateCreation DATETIME NOT NULL,
