@@ -6,6 +6,8 @@ const main = async () => {
   try {
     connection = await getConnection();
 
+    await connection.query("DROP TABLE IF EXISTS users");
+
     await connection.query(`
     CREATE TABLE users (
         id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,

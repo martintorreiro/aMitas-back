@@ -10,8 +10,6 @@ app.use(express.json());
 app.use(cors());
 //Settings
 
-app.set("port", 3100);
-
 app.post("/register", newUser);
 app.post("/login", login);
 
@@ -35,6 +33,6 @@ app.use((error, req, res, next) => {
 
 /* app.get("/", (req, res) => {}); */
 
-app.listen(app.get("port"), () => {
-  console.log(`Aplicacion corriendo en el puerto ${app.get("port")}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Aplicacion corriendo en el puerto ${process.env.PORT}`);
 });
