@@ -4,13 +4,15 @@ const jsonwebtoken = require("jsonwebtoken");
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-
+   
     await checkPass(email, password);
+    
     const tokenInfo = { email, password };
+
     const token = jsonwebtoken.sign(tokenInfo, process.env.SECRET, {
       expiresIn: "30d",
     });
-    console.log(login);
+    console.log("login");
     res.send({
       status: "ok",
       message: { token },

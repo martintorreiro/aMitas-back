@@ -6,11 +6,11 @@ const main = async () => {
   let connection;
 
   try {
-    const connection = await mysql.createConnection(process.env.DATABASE_URL);
+    const connection = await getConnection();
 
-    await connection.execute("DROP TABLE IF EXISTS users");
+    await connection.query("DROP TABLE IF EXISTS users");
 
-    await connection.execute(`
+    await connection.query(`
     CREATE TABLE users (
         id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         dateCreation DATETIME NOT NULL,

@@ -3,6 +3,7 @@ const newUser = require("./controllers/newUser");
 const cors = require("cors");
 const { logging } = require("googleapis/build/src/apis/logging");
 const login = require("./controllers/login");
+const validate = require("./controllers/validate");
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.set("port", 3100);
 
 app.post("/register", newUser);
 app.post("/login", login);
+app.post("/validate", validate);
 
 //Middleware 404
 
