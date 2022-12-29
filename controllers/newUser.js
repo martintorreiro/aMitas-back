@@ -5,17 +5,16 @@ const { randomString } = require("../helpers");
 
 const newUser = async (req, res, next) => {
   try {
-   
     const { email, password } = req.body;
 
     await checkEmail(email);
-   
+
     const registrationCode = randomString(6);
-    
+
     await registerUser(email, password, registrationCode);
-    
-    const emailInfo = await sendEmail(email, registrationCode);
-    /* console.log("aqui",email,password,registrationCode,emailInfo); */
+
+    /*  const emailInfo = await sendEmail(email, registrationCode); */
+
     res.send({
       status: "ok",
       message:

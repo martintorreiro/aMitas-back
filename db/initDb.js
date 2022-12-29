@@ -8,7 +8,9 @@ const main = async () => {
   try {
     const connection = await getConnection();
 
-    await connection.query("DROP TABLE IF EXISTS users");
+    await connection.query(
+      "DROP TABLE IF EXISTS users,dataSheet,dataSheetUsers,userConcepts"
+    );
 
     await connection.query(`
     CREATE TABLE users (
@@ -23,6 +25,32 @@ const main = async () => {
         image TINYTEXT,
         registrationCode TINYTEXT,       
         active BOOLEAN DEFAULT false        
+    )`);
+
+    await connection.query(`
+    CREATE TABLE dataSheet (
+        id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+        userId INTEGER NOT NULL,
+        creator VARCHAR(20) NOT NULL,
+        dateCreation DATETIME NOT NULL,
+        dateLastChange DATETIME,
+        title VARCHAR(50) NOT NULL,
+        active BOOLEAN DEFAULT false        
+    )`);
+
+    await connection.query(`
+    CREATE TABLE dataSheetUsers (
+        id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+        dataSheetId INTEGER NOT NULL,
+        name VARCHAR(20) NOT NULL
+    )`);
+
+    await connection.query(`
+    CREATE TABLE userConcepts (
+        id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+        dataSheetUserId INTEGER NOT NULL,
+        name VARCHAR(20) NOT NULL
+      
     )`);
   } catch (error) {
     console.error(error);

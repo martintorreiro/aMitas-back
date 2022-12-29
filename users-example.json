@@ -1,0 +1,29 @@
+{
+  "titulo": "Viaje a Madrid",
+  "fecha": "17/08/22",
+  "descripcion": "Hoja de ejemplo",
+  "moneda": "EUR",
+  "creador": "Manuel",
+
+  "usuarios": [
+    {
+      "nombre": "Manuel",
+      "conceptos": [{ "concepto": "Gasolina", "importe": 60 }]
+    },
+    {
+      "nombre": "Antonio",
+      "conceptos": []
+    },
+    {
+      "nombre": "Maria",
+      "conceptos": [
+        { "concepto": "Comida", "importe": 100 },
+        { "concepto": "Gasolina", "importe": 100 }
+      ]
+    },
+    {
+      "nombre": "Rodrigo",
+      "conceptos": [{ "concepto": "Hotel", "importe": 230 }]
+    }
+  ]
+}
