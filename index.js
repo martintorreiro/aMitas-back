@@ -5,7 +5,7 @@ const { logging } = require("googleapis/build/src/apis/logging");
 const login = require("./controllers/login");
 const validate = require("./controllers/validate");
 const newDataSheet = require("./controllers/newDataSheet");
-const getPrueba = require("./controllers/getPrueba");
+const getDataSheet = require("./controllers/getDS");
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.use(cors());
 
 app.set("port", 3100);
 
-app.get("/prueba", getPrueba);
+app.get("/getDS/:datasheet", getDataSheet);
 
 app.post("/register", newUser);
 app.post("/login", login);
@@ -39,8 +39,6 @@ app.use((error, req, res, next) => {
     message: error.message,
   });
 });
-
-/* app.get("/", (req, res) => {}); */
 
 app.listen(app.get("port"), () => {
   console.log(`Aplicacion corriendo en el puerto ${app.get("port")}`);

@@ -30,12 +30,13 @@ const main = async () => {
     await connection.query(`
     CREATE TABLE dataSheet (
         id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-        userId INTEGER NOT NULL,
-        creator VARCHAR(20) NOT NULL,
         dateCreation DATETIME NOT NULL,
         dateLastChange DATETIME,
         title VARCHAR(50) NOT NULL,
-        active BOOLEAN DEFAULT false        
+        creator VARCHAR(20) NOT NULL,
+        description VARCHAR(150) ,
+        urlCode VARCHAR(50) NOT NULL,
+        active BOOLEAN DEFAULT true        
     )`);
 
     await connection.query(`
