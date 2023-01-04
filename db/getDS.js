@@ -4,19 +4,28 @@ const getDS = async (urlCode) => {
   let connection;
   try {
     connection = await getConnection();
-
+    console.log;
     const [dataSheet] = await connection.query(
       `
-        SELECT *
-        FROM datasheetusers
-        LEFT JOIN datasheet ON datasheetusers.dataSheetId=datasheet.id
-        WHERE datasheet.urlCode = ? ;
+        SELECT id,dateCreation,title,description,creator,badge
+        FROM datasheet
+        WHERE urlCode = ? ;
         `,
       [urlCode]
     );
 
-    console.log(dataSheet);
-    return dataSheet;
+    const [dataUsers] = await connection.query(
+      `
+      SELECT dsu.name,uc.concept,uc.amount
+      FROM datasheetusers dsu
+      LEFT JOIN userconcepts uc
+      ON dsu.id = uc.dataSheetUserId
+      WHERE dsu.dataSheetId = ?;
+        `,
+      [dataSheet[0].id]
+    );
+    console.log(dataUsers);
+    return { dataSheet: dataSheet[0], dataUsers };
   } finally {
     if (connection) connection.release();
   }

@@ -9,8 +9,27 @@ const getDataSheet = async (req, res, next) => {
     if (clientDSrequired === "example") {
       response = exampleSheet;
     } else {
-      const jjj = await getDS(clientDSrequired);
-      console.log(jjj);
+      const getDSResponse = await getDS(clientDSrequired);
+
+      const rresponse = getDSResponse.dataSheet;
+
+      rresponse.usuarios = getDSResponse.dataUsers.reduce((acc, current) => {
+        const exist = acc.find((el) => el.nombre === current.name);
+        console.log(current);
+
+        /* return exist
+          ? [...acc]
+          : [
+              ...acc,
+              {
+                nombre: current.name,
+                conceptos: [
+                  { concepto: current.concept, importe: current.amount },
+                ],
+              },
+            ]; */
+      }, []);
+      console.log("->", rresponse.usuarios);
     }
 
     res.send({

@@ -7,13 +7,12 @@ const createDataSheet = async (data, urlCode) => {
 
     const [ds] = await connection.query(
       `
-              INSERT INTO datasheet(dateCreation, title, description, creator,urlCode )
-              VALUES(UTC_TIMESTAMP, ?, ?,?,?)
+              INSERT INTO datasheet(dateCreation, title, description, creator,badge,urlCode )
+              VALUES(UTC_TIMESTAMP, ?, ?,?,?,?)
           `,
-      [data.titulo, data.descripcion, data.creador, urlCode]
+      [data.titulo, data.descripcion, data.creador, data.moneda, urlCode]
     );
 
-    console.log(ds.insertId);
     data.usuarios.map(async (user) => {
       await connection.query(
         `

@@ -33,8 +33,9 @@ const main = async () => {
         dateCreation DATETIME NOT NULL,
         dateLastChange DATETIME,
         title VARCHAR(50) NOT NULL,
-        creator VARCHAR(20) NOT NULL,
+        creator VARCHAR(20) ,
         description VARCHAR(150) ,
+        badge VARCHAR(20) ,
         urlCode VARCHAR(50) NOT NULL,
         active BOOLEAN DEFAULT true        
     )`);
@@ -50,7 +51,8 @@ const main = async () => {
     CREATE TABLE userConcepts (
         id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         dataSheetUserId INTEGER NOT NULL,
-        name VARCHAR(20) NOT NULL
+        concept VARCHAR(20) NOT NULL,
+        amount INTEGER NOT NULL
       
     )`);
   } catch (error) {
