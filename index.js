@@ -6,6 +6,7 @@ const login = require("./controllers/login");
 const validate = require("./controllers/validate");
 const newDataSheet = require("./controllers/newDataSheet");
 const getDataSheet = require("./controllers/getDS");
+const addUser = require("./controllers/addUser");
 
 const app = express();
 
@@ -21,6 +22,8 @@ app.post("/register", newUser);
 app.post("/login", login);
 app.post("/validate", validate);
 app.post("/newDataSheet", newDataSheet);
+
+app.post("/addUser", addUser);
 
 //Middleware 404
 

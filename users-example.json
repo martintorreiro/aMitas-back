@@ -1,8 +1,8 @@
 {
-  "titulo": "Viaje a Madrid",
-  "fecha": "17/08/22",
+  "title": "Viaje a Madrid",
+  "dateCreation": "17/08/22",
   "descripcion": "Hoja de ejemplo",
-  "creador":"Amitas Corp",
+  "creator": "Amitas Corp",
   "moneda": "EUR",
 
   "usuarios": [
