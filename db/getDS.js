@@ -4,7 +4,7 @@ const getDS = async (urlCode) => {
   let connection;
   try {
     connection = await getConnection();
-    console.log;
+    
     const [dataSheet] = await connection.query(
       `
         SELECT id,dateCreation,title,description,creator,badge
@@ -24,7 +24,7 @@ const getDS = async (urlCode) => {
         `,
       [dataSheet[0].id]
     );
-    console.log(dataUsers);
+    console.log("dataUSers",dataUsers);
     return { dataSheet: dataSheet[0], dataUsers };
   } finally {
     if (connection) connection.release();
