@@ -1,5 +1,5 @@
-const { generateError } = require("../helpers");
-const { getConnection } = require("./get-connection");
+const { generateError } = require("../../helpers");
+const { getConnection } = require("../get-connection");
 
 const checkPass = async (email, password) => {
   let connection;

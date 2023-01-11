@@ -1,4 +1,4 @@
-const getDS = require("../db/getDS");
+const getDS = require("../db/get-ds");
 const exampleSheet = require("../users-example.json");
 
 const getDataSheet = async (req, res, next) => {
@@ -11,27 +11,30 @@ const getDataSheet = async (req, res, next) => {
     } else {
       const getDSResponse = await getDS(clientDSrequired);
 
-      response = getDSResponse.dataSheet; 3
+      response = getDSResponse.dataSheet;
+      3;
 
       response.usuarios = getDSResponse.dataUsers.reduce((acc, current) => {
         const exist = acc.findIndex((el) => el.nombre === current.name);
-        
-        console.log(exist)
-        if(!exist){
-         
-          acc[exist].conceptos.push({concepto:current.concept, importe:current.amount})
-          console.log("acc",acc)
-          return acc
-        }else{
+
+        console.log(exist);
+        if (!exist) {
+          acc[exist].conceptos.push({
+            concepto: current.concept,
+            importe: current.amount,
+          });
+          console.log("acc", acc);
+          return acc;
+        } else {
           return [
             ...acc,
             {
               nombre: current.name,
-              conceptos: current.concept?[
-                { concepto: current.concept, importe: current.amount },
-              ]:[]
+              conceptos: current.concept
+                ? [{ concepto: current.concept, importe: current.amount }]
+                : [],
             },
-          ]; 
+          ];
         }
         /*  return exist
           ? [...acc]
@@ -44,7 +47,7 @@ const getDataSheet = async (req, res, next) => {
                 ],
               },
             ]; */
-      }, []); 
+      }, []);
       console.log("->", response);
     }
 

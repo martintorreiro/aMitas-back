@@ -1,12 +1,12 @@
 const express = require("express");
-const newUser = require("./controllers/newUser");
+const newUser = require("./controllers/users/new-user");
 const cors = require("cors");
 const { logging } = require("googleapis/build/src/apis/logging");
-const login = require("./controllers/login");
-const validate = require("./controllers/validate");
-const newDataSheet = require("./controllers/newDataSheet");
-const getDataSheet = require("./controllers/getDS");
-const addUser = require("./controllers/addUser");
+const login = require("./controllers/users/login");
+const validate = require("./controllers/users/validate");
+const newDataSheet = require("./controllers/new-data-sheet");
+const getDataSheet = require("./controllers/get-ds");
+const addUser = require("./controllers/add-user");
 
 const app = express();
 

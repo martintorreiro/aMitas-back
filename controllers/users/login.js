@@ -1,12 +1,12 @@
-const checkPass = require("../db/check-pass");
+const checkPass = require("../../db/users/check-pass");
 const jsonwebtoken = require("jsonwebtoken");
 
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-   
+
     await checkPass(email, password);
-    
+
     const tokenInfo = { email, password };
 
     const token = jsonwebtoken.sign(tokenInfo, process.env.SECRET, {

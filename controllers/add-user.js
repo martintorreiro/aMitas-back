@@ -1,5 +1,5 @@
-const addUserDb = require("../db/addUser");
-const checkUserDs = require("../db/checkUserDs");
+const addUserDb = require("../db/add-user");
+const checkUserDs = require("../db/check-user-ds");
 
 const addUser = async (req, res, next) => {
   const { user, dataId } = req.body;

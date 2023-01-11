@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
-const { generateError } = require("../helpers");
+const { generateError } = require("../../helpers");
 
 const { CLIENT_SECRET, CLIENT_ID, REFRESH_TOKEN, CLIENT_USER } = process.env;
 

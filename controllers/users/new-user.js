@@ -1,7 +1,7 @@
-const checkEmail = require("../db/checkEmail");
-const registerUser = require("../db/register-user");
-const sendEmail = require("../db/send-email");
-const { randomString } = require("../helpers");
+const checkEmail = require("../../db/users/check-email");
+const registerUser = require("../../db/users/register-user");
+const sendEmail = require("../../db/users/send-email");
+const { randomString } = require("../../helpers");
 
 const newUser = async (req, res, next) => {
   try {
