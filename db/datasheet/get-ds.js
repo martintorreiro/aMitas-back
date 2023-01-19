@@ -1,4 +1,4 @@
-const { getConnection } = require("./get-connection");
+const { getConnection } = require("../get-connection");
 
 const getDS = async (urlCode) => {
   let connection;

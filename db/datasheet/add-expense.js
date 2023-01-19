@@ -1,6 +1,6 @@
-const { getConnection } = require("./get-connection");
+const { getConnection } = require("../get-connection");
 
-const addUserDb = async (user, dataId) => {
+const addExpenseDb = async (user, dataId) => {
   let connection;
   try {
     connection = await getConnection();
@@ -8,16 +8,14 @@ const addUserDb = async (user, dataId) => {
     const [newUser] = await connection.query(
       `
               INSERT INTO datasheetusers(name,dataSheetId)
-              VALUES(?,?)
+              VALUES(?,?) 
           `,
       [user, dataId]
     );
-
-    console.log(newUser);
 
     return true;
   } finally {
     if (connection) connection.release();
   }
 };
-module.exports = addUserDb;
+module.exports = addExpenseDb;

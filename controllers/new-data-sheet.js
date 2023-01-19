@@ -1,4 +1,4 @@
-const createDataSheet = require("../db/craete-data-sheet");
+const createDataSheet = require("../db/datasheet/craete-data-sheet");
 const { randomString } = require("../helpers");
 
 const newDataSheet = async (req, res, next) => {
