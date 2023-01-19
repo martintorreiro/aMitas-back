@@ -14,9 +14,11 @@ const getDS = async (urlCode) => {
       [urlCode]
     );
 
+    console.log(dataSheet);
+
     const [dataUsers] = await connection.query(
       `
-      SELECT dsu.name,uc.concept,uc.amount
+      SELECT dsu.id,dsu.name,uc.concept,uc.amount
       FROM datasheetusers dsu
       LEFT JOIN userconcepts uc
       ON dsu.id = uc.dataSheetUserId

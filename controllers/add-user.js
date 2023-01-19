@@ -7,10 +7,10 @@ const addUser = async (req, res, next) => {
     const existUser = await checkUserDs(user, dataId);
 
     await addUserDb(user, dataId);
+
     res.send({
       status: "ok",
-      message:
-        "Usuario registrado, se le ha enviado un email a su correo con una clave de confirmacion ",
+      message: "Usuario añadido a la lista",
     });
   } catch (error) {
     next(error);
