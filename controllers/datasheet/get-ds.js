@@ -1,5 +1,5 @@
-const getDS = require("../db/datasheet/get-ds");
-const exampleSheet = require("../users-example.json");
+const getDS = require("../../db/datasheet/get-ds");
+const exampleSheet = require("../../users-example.json");
 
 const getDataSheet = async (req, res, next) => {
   const clientDSrequired = req.params.datasheet;

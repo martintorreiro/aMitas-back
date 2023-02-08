@@ -1,4 +1,4 @@
-const { getConnection } = require("./get-connection");
+const { getConnection } = require("../get-connection");
 const mysql = require("mysql2/promise");
 require("dotenv").config();
 

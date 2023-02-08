@@ -1,4 +1,4 @@
-const addExpenseDb = require("../db/datasheet/add-expense");
+const addExpenseDb = require("../../db/datasheet/add-expense");
 
 const addExpense = async (req, res, next) => {
   const { dataId, concept, amount } = req.body;
