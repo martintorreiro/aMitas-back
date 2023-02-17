@@ -1,29 +1,32 @@
 const getDS = require("../db/datasheet/get-ds");
+const getUsersConcepts = require("../db/datasheet/get-users-concepts");
 const exampleSheet = require("../users-example.json");
 
 const getDataSheet = async (req, res, next) => {
-  const clientDSrequired = req.params.datasheet;
+  const dsRequired = req.params.datasheet;
   let response;
 
   try {
-    if (clientDSrequired === "example") {
+    if (dsRequired === "example") {
       response = exampleSheet;
     } else {
-      const getDSResponse = await getDS(clientDSrequired);
+      const responseDs = await getDS(dsRequired);
 
-      response = getDSResponse.dataSheet;
+      response = responseDs;
 
-      response.users = getDSResponse.dataUsers.reduce((acc, current) => {
+      console.log(response);
 
+      const responseUsersConcepts = getUsersConcepts(responseDs.id);
+
+      response.users = responseUsersConcepts.reduce((acc, current) => {
         const exist = acc.findIndex((el) => el.name === current.name);
 
         if (!exist) {
-
           acc[exist].concepts.push({
             concept: current.concept,
             amount: current.amount,
           });
-        
+
           return acc;
         } else {
           return [
@@ -36,9 +39,7 @@ const getDataSheet = async (req, res, next) => {
             },
           ];
         }
-     
       }, []);
-    
     }
 
     res.send({
