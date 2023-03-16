@@ -1,8 +1,11 @@
 const { getConnection } = require("../get-connection");
 
 const addUserDb = async (user, dataId) => {
+
   let connection;
+
   try {
+
     connection = await getConnection();
 
     const [newUser] = await connection.query(

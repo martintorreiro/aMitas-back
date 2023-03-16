@@ -1,5 +1,5 @@
-const createDataSheet = require("../db/datasheet/craete-data-sheet");
-const { randomString } = require("../helpers");
+const createDataSheet = require("../../db/datasheet/craete-data-sheet");
+const { randomString } = require("../../helpers");
 
 const newDataSheet = async (req, res, next) => {
   try {

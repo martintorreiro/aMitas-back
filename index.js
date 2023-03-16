@@ -4,10 +4,10 @@ const cors = require("cors");
 const { logging } = require("googleapis/build/src/apis/logging");
 const login = require("./controllers/users/login");
 const validate = require("./controllers/users/validate");
-const newDataSheet = require("./controllers/new-data-sheet");
-const getDataSheet = require("./controllers/get-ds");
-const addUser = require("./controllers/add-user");
-const addExpense = require("./controllers/add-expense");
+const newDataSheet = require("./controllers/datasheet/new-data-sheet");
+const getDataSheet = require("./controllers/datasheet/get-ds");
+const addUser = require("./controllers/datasheet/add-user");
+const addExpense = require("./controllers/datasheet/add-expense");
 
 const app = express();
 
@@ -19,11 +19,15 @@ app.set("port", 3100);
 
 app.get("/getDS/:datasheet", getDataSheet);
 
+//Users
+
 app.post("/register", newUser);
 app.post("/login", login);
 app.post("/validate", validate);
-app.post("/newDataSheet", newDataSheet);
 
+//CalcSheet
+
+app.post("/newDataSheet", newDataSheet);
 app.post("/addUser", addUser);
 app.post("/addExpense", addExpense);
 
