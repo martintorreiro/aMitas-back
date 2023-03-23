@@ -13,7 +13,9 @@ const newUser = async (req, res, next) => {
 
     await registerUser(email, password, registrationCode);
 
-    /* const emailInfo = await sendEmail(email, registrationCode); */
+    const emailInfo = await sendEmail(email, registrationCode);
+
+    console.log("email",emailInfo)
 
     res.send({
       status: "ok",

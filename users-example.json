@@ -1,29 +1,22 @@
-{
+{ 
   "title": "Viaje a Madrid",
   "dateCreation": "17/08/22",
   "description": "Hoja de ejemplo",
   "creator": "Amitas Corp",
-  "currency": "EUR",
+  "badge": "EUR",
+  "totalAmount": 490,
+  
 
   "users": [
-    {
-      "name": "Manuel",
-      "concepts": [{ "concept": "Gasolina", "amount": 60 }]
-    },
-    {
-      "name": "Antonio",
-      "concepts": []
-    },
-    {
-      "name": "Maria",
-      "concepts": [
-        { "concept": "Comida", "amount": 100 },
-        { "concept": "Gasolina", "amount": 100 }
-      ]
-    },
-    {
-      "name": "Rodrigo",
-      "concepts": [{ "concept": "Hotel", "amount": 230 }]
-    }
+    { "id":1, "name": "Manuel","amount":60 },
+    { "id":2, "name": "Antonio","amount":0 },
+    { "id":3, "name": "Maria","amount":200 },
+    { "id":4, "name": "Rodrigo","amount":230 }
+  ],
+  "expenses":[
+    { "concept": "Gasolina", "amount": 60 ,"name":"Manuel" },
+    { "concept": "Hotel", "amount": 230,"name": "Rodrigo" },
+    { "concept": "Comida", "amount": 100 ,"name": "Maria" },
+    { "concept": "Gasolina", "amount": 100,"name": "Maria" }
   ]
 }

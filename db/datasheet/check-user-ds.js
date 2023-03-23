@@ -3,7 +3,9 @@ const { getConnection } = require("../get-connection");
 
 const checkUserDs = async (user, dataId) => {
   let connection;
+
   try {
+    
     connection = await getConnection();
 
     const [existUser] = await connection.query(

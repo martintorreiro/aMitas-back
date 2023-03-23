@@ -1,6 +1,7 @@
 const { getConnection } = require("../get-connection");
 
 const addExpenseDb = async (dataId, concept, amount) => {
+  
   let connection;
 
   try {

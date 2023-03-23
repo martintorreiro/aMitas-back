@@ -44,7 +44,7 @@ const main = async () => {
     CREATE TABLE dataSheetUsers (
         id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         dataSheetId INTEGER NOT NULL,
-        name VARCHAR(20)  NOT NULL 
+        name VARCHAR(20)  NOT NULL
     )`);
 
     await connection.query(`
