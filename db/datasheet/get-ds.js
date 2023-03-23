@@ -13,8 +13,6 @@ const getDS = async (urlCode) => {
       [urlCode]
     );
 
-    console.log(dataSheet);
-
     const [dataUsers] = await connection.query(
       `
       SELECT dsu.*,SUM(uc.amount) AS amount  FROM datasheetusers dsu
