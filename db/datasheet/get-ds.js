@@ -39,6 +39,7 @@ const getDS = async (urlCode) => {
     
     console.log("dataUSers", dataUsers);
     return response;
+
   } finally {
     if (connection) connection.release();
   }
