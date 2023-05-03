@@ -4,8 +4,9 @@ const { getConnection } = require("../get-connection");
 const checkPass = async (email, password) => {
   let connection;
   try {
+    
     connection = await getConnection();
-
+    console.log("check")   
     const [result] = await connection.query(
       `
           SELECT email

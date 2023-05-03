@@ -8,11 +8,12 @@
   
 
   "users": [
-    { "id":1, "name": "Manuel","amount":60 },
-    { "id":2, "name": "Antonio","amount":0 },
-    { "id":3, "name": "Maria","amount":200 },
-    { "id":4, "name": "Rodrigo","amount":230 }
+    { "id":1, "name": "Manuel","amount":60, "balance":-62.50 },
+    { "id":2, "name": "Antonio","amount":0, "balance":-122.50 },
+    { "id":3, "name": "Maria","amount":200, "balance":77.50 },
+    { "id":4, "name": "Rodrigo","amount":230, "balance":107.50 }
   ],
+  
   "expenses":[
     { "concept": "Gasolina", "amount": 60 ,"name":"Manuel" },
     { "concept": "Hotel", "amount": 230,"name": "Rodrigo" },

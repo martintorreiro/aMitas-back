@@ -20,6 +20,7 @@ const login = async (req, res, next) => {
       message: { token },
     });
   } catch (error) {
+    console.log("loggin",error)
     next(error);
   }
 };

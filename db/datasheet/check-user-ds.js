@@ -5,6 +5,13 @@ const checkUserDs = async (user, dataId) => {
   let connection;
 
   try {
+
+    if (user.length < 2) {
+      throw generateError(
+        "El nombre debe tener 2 letras minimo",
+        409
+      );
+    }
     
     connection = await getConnection();
 
@@ -19,7 +26,7 @@ const checkUserDs = async (user, dataId) => {
     
     if (!existUser.length < 1) {
       throw generateError(
-        "Ya existe un usuario en la hoja de calculo con ese nombre",
+        "Ya existe un usuario con ese nombre",
         409
       );
     }

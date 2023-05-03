@@ -9,26 +9,26 @@ const main = async () => {
     const connection = await getConnection();
 
     await connection.query(
-      "DROP TABLE IF EXISTS users,dataSheet,dataSheetUsers,userConcepts"
+      "DROP TABLE IF EXISTS user, datasheet, dataUser, dataExpense"
     );
 
     await connection.query(`
-    CREATE TABLE users (
+    CREATE TABLE user (
         id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         dateCreation DATETIME NOT NULL,
-        dateLastLogIn DATETIME,
+        lastLogin DATETIME,
         name VARCHAR(20) DEFAULT "Undefined",
         surname VARCHAR(20) DEFAULT "Undefined",
         email VARCHAR(100) UNIQUE NOT NULL,
         password TINYTEXT NOT NULL,
-        userName VARCHAR(25)  ,
+        userName VARCHAR(25),
         image TINYTEXT,
         registrationCode TINYTEXT,       
         active BOOLEAN DEFAULT false        
     )`);
 
     await connection.query(`
-    CREATE TABLE dataSheet (
+    CREATE TABLE datasheet (
         id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         dateCreation DATETIME NOT NULL,
         dateLastChange DATETIME,
@@ -41,14 +41,14 @@ const main = async () => {
     )`);
 
     await connection.query(`
-    CREATE TABLE dataSheetUsers (
+    CREATE TABLE dataUser (
         id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         dataSheetId INTEGER NOT NULL,
-        name VARCHAR(20)  NOT NULL
+        name VARCHAR(20)  NOT NULL,
     )`);
 
     await connection.query(`
-    CREATE TABLE userConcepts (
+    CREATE TABLE dataExpense (
         id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         dataSheetUserId INTEGER NOT NULL,
         concept VARCHAR(20) NOT NULL,

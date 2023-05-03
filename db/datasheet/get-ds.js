@@ -7,38 +7,15 @@ const getDS = async (urlCode) => {
 
     const [dataSheet] = await connection.query(
       `
-        SELECT * FROM datasheet
-        WHERE urlCode = ? ;
+        SELECT ds.*, SUM(uc.amount) AS totalAmount FROM datasheet ds
+        LEFT JOIN datasheetusers dsu ON ds.id = dsu.dataSheetId
+        LEFT JOIN userconcepts uc ON dsu.id = uc.dataSheetUserId
+        WHERE ds.urlCode = ? GROUP BY ds.id;
         `,
       [urlCode]
     );
-
-    const [dataUsers] = await connection.query(
-      `
-      SELECT dsu.*,SUM(uc.amount) AS amount  FROM datasheetusers dsu
-      LEFT JOIN userconcepts uc ON dsu.id = uc.dataSheetUserId
-      WHERE dsu.dataSheetId = ?
-      GROUP BY dsu.id;
-        `,
-      [dataSheet[0].id]
-    );
-
-    const [dataExpenses] = await connection.query(
-      `
-      SELECT uc.*, dsu.name FROM userconcepts uc
-      LEFT JOIN datasheetusers dsu ON dsu.id = uc.dataSheetUserId
-      WHERE dsu.dataSheetId = ?;
-      `,
-      [dataSheet[0].id]
-    );
-
-    const response = dataSheet[0]
-    response.totalAmount = dataExpenses.reduce((a, b) => a + b.amount, 0);
-    response.users = dataUsers
-    response.expenses = dataExpenses
     
-    console.log("dataUSers", dataUsers);
-    return response;
+    return dataSheet[0];
 
   } finally {
     if (connection) connection.release();

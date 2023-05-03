@@ -4,6 +4,7 @@ const sendEmail = require("../../db/users/send-email");
 const { randomString } = require("../../helpers");
 
 const newUser = async (req, res, next) => {
+ 
   try {
     const { email, password } = req.body;
 
