@@ -1,6 +1,5 @@
-const { getConnection } = require("../get-connection");
-const mysql = require("mysql2/promise");
 require("dotenv").config();
+const { getConnection } = require("./get-connection");
 
 const main = async () => {
   let connection;
