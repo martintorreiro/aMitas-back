@@ -1,7 +1,6 @@
 const { getConnection } = require("../get-connection");
 
-const addExpenseDb = async (dataId, concept, amount) => {
-  
+const addExpenseDb = async (userId, concept, amount) => {
   let connection;
 
   try {
@@ -12,7 +11,7 @@ const addExpenseDb = async (dataId, concept, amount) => {
               INSERT INTO userconcepts(dataSheetUserId,concept,amount)
               VALUES(?,?,?) 
           `,
-      [dataId, concept, amount]
+      [userId, concept, amount]
     );
 
     return true;

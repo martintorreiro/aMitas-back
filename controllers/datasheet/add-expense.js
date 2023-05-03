@@ -1,10 +1,10 @@
 const addExpenseDb = require("../../db/datasheet/add-expense");
 
 const addExpense = async (req, res, next) => {
-  const { dataId, concept, amount } = req.body;
-  console.log("--->",dataId,concept,amount)
+  const { userId, concept, amount } = req.body;
+  console.log("--->", userId, concept, amount);
   try {
-    await addExpenseDb(dataId, concept, amount);
+    await addExpenseDb(userId, concept, amount);
 
     res.send({
       status: "ok",

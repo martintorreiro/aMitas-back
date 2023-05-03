@@ -52,7 +52,7 @@ const main = async () => {
         id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         dataSheetUserId INTEGER NOT NULL,
         concept VARCHAR(20) NOT NULL,
-        amount INTEGER NOT NULL
+        amount DECIMAL(10,2) NOT NULL
       
     )`);
   } catch (error) {
