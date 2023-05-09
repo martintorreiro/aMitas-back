@@ -9,7 +9,7 @@ const checkPass = async (email, password) => {
     console.log("check")   
     const [result] = await connection.query(
       `
-          SELECT email
+          SELECT *
           FROM users
           WHERE email=? AND password=SHA2(?, 512)
         `,
@@ -23,7 +23,7 @@ const checkPass = async (email, password) => {
       );
     }
 
-    return true;
+    return result.id;
   } finally {
     if (connection) connection.release();
   }

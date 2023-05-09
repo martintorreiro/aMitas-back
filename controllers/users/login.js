@@ -7,7 +7,7 @@ const login = async (req, res, next) => {
 
   try {
 
-    await checkPass(email, password);
+    const userId = await checkPass(email, password);
 
     const tokenInfo = { email, password };
 
@@ -17,7 +17,7 @@ const login = async (req, res, next) => {
    
     res.send({
       status: "ok",
-      message: { token },
+      message: { token, userId },
     });
   } catch (error) {
     console.log("loggin",error)
