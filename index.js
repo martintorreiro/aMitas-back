@@ -8,6 +8,7 @@ const newDataSheet = require("./controllers/datasheet/new-data-sheet");
 const getDataSheet = require("./controllers/datasheet/get-ds");
 const addUser = require("./controllers/datasheet/add-user");
 const addExpense = require("./controllers/datasheet/add-expense");
+const getSharedList = require("./controllers/users/getSharedList")
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.get("/getDS/:datasheet", getDataSheet);
 app.post("/register", newUser);
 app.post("/login", login);
 app.post("/validate", validate);
+app.get("/getSharedList/:userId", getSharedList);
 
 //CalcSheet
 

@@ -8,7 +8,7 @@ const login = async (req, res, next) => {
   try {
 
     const userId = await checkPass(email, password);
-
+  
     const tokenInfo = { email, password };
 
     const token = jsonwebtoken.sign(tokenInfo, process.env.SECRET, {
@@ -20,7 +20,6 @@ const login = async (req, res, next) => {
       message: { token, userId },
     });
   } catch (error) {
-    console.log("loggin",error)
     next(error);
   }
 };

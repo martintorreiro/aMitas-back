@@ -22,8 +22,8 @@ const checkPass = async (email, password) => {
         409
       );
     }
-
-    return result.id;
+    
+    return result[0].id;
   } finally {
     if (connection) connection.release();
   }
