@@ -16,11 +16,11 @@ const main = async () => {
         id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         dateCreation DATETIME NOT NULL,
         lastLogin DATETIME,
-        name VARCHAR(20) DEFAULT "Undefined",
-        surname VARCHAR(20) DEFAULT "Undefined",
+        name VARCHAR(20) DEFAULT "Sin definir",
+        surname VARCHAR(20) DEFAULT "Sin definir",
         email VARCHAR(100) UNIQUE NOT NULL,
         password TINYTEXT NOT NULL,
-        userName VARCHAR(25),
+        userName VARCHAR(25) DEFAULT "Sin definir",
         image TINYTEXT,
         registrationCode TINYTEXT,       
         active BOOLEAN DEFAULT false        
@@ -33,10 +33,11 @@ const main = async () => {
         dateLastChange DATETIME,
         title VARCHAR(50) NOT NULL,
         creator VARCHAR(20) ,
-        description VARCHAR(150) ,
+        description VARCHAR(150) DEFAULT "Sin descripcion" ,
         badge VARCHAR(20) ,
         urlCode VARCHAR(50) NOT NULL,
-        active BOOLEAN DEFAULT true        
+        active BOOLEAN DEFAULT true ,
+        total DECIMAL(12,2) NOT NULL,       
     )`);
 
     await connection.query(`
@@ -50,7 +51,7 @@ const main = async () => {
     CREATE TABLE dataExpense (
         id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         dataSheetUserId INTEGER NOT NULL,
-        concept VARCHAR(20) NOT NULL,
+        concept VARCHAR(20) REQUIRED,
         amount DECIMAL(10,2) NOT NULL
       
     )`);
